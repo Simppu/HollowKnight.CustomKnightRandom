@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Shade : Skinable_Tk2d
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace CustomKnight.Canvas
+namespace CustomKinightRandom.Canvas
 {
     public class CanvasPanel
     {

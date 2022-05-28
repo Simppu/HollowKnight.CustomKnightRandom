@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class SaveModSettings  {
         public string DefaultSkin {get; set;} = null;

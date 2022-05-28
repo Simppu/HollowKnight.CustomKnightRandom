@@ -1,12 +1,12 @@
-﻿using CustomKnight.Canvas;
+﻿using CustomKinightRandom.Canvas;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
-    public class CustomKnight : Mod,  IGlobalSettings<GlobalModSettings>, ILocalSettings<SaveModSettings>,ICustomMenuMod , ITogglableMod
+    public class CustomKinightRandom : Mod,  IGlobalSettings<GlobalModSettings>, ILocalSettings<SaveModSettings>,ICustomMenuMod , ITogglableMod
     {
         public static GlobalModSettings GlobalSettings { get; set; } = new GlobalModSettings();
         public static SaveModSettings SaveSettings { get; set; } = new SaveModSettings();
-        public static CustomKnight Instance { get; private set; }
+        public static CustomKinightRandom Instance { get; private set; }
         public static DumpManager dumpManager {get; private set;} = new DumpManager();
         public static SwapManager swapManager {get; private set;} = new SwapManager();
 
@@ -39,18 +39,18 @@ namespace CustomKnight
         public void OnLoadGlobal(GlobalModSettings s)
         {
             if(s.Version == GetVersion()){
-                CustomKnight.GlobalSettings = s;
+                CustomKinightRandom.GlobalSettings = s;
             } else {
                 var DefaultSettings = new GlobalModSettings();
-                CustomKnight.GlobalSettings = s;
-                CustomKnight.GlobalSettings.Version = GetVersion();
-                CustomKnight.GlobalSettings.NameLength = DefaultSettings.NameLength;
+                CustomKinightRandom.GlobalSettings = s;
+                CustomKinightRandom.GlobalSettings.Version = GetVersion();
+                CustomKinightRandom.GlobalSettings.NameLength = DefaultSettings.NameLength;
             }
         }
 
         public GlobalModSettings OnSaveGlobal()
         {
-            return CustomKnight.GlobalSettings;
+            return CustomKinightRandom.GlobalSettings;
         }
 
         public override List<(string, string)> GetPreloadNames()
@@ -77,7 +77,7 @@ namespace CustomKnight
 
         public override void Initialize(Dictionary<string, Dictionary<string, GameObject>> preloadedObjects)
         {
-            Log($"Initializing CustomKnight {version}");
+            Log($"Initializing CustomKinightRandom {version}");
             if (Instance == null) 
             { 
                 Instance = this;
@@ -88,7 +88,7 @@ namespace CustomKnight
             SkinManager.checkDirectoryStructure();
 
             SkinManager.getSkinNames();             
-            SkinManager.CurrentSkin = SkinManager.GetSkinById(CustomKnight.GlobalSettings.DefaultSkin);
+            SkinManager.CurrentSkin = SkinManager.GetSkinById(CustomKinightRandom.GlobalSettings.DefaultSkin);
             swapManager.SkinChangeSwap(SkinManager.CurrentSkin);
             // Initial load
             if (preloadedObjects != null)
@@ -103,7 +103,7 @@ namespace CustomKnight
                 GameObjects.Add("DreamArrival", preloadedObjects["GG_Vengefly"]["Boss Scene Controller/Dream Entry/Knight Dream Arrival"]);
                 GameObjects.Add("Dreamnail", preloadedObjects["RestingGrounds_07"]["Dream Moth/Knight Dummy"]);
             }
-            if(CustomKnight.GlobalSettings.SwapperEnabled){
+            if(CustomKinightRandom.GlobalSettings.SwapperEnabled){
                 swapManager.enabled = true;
                 swapManager.active = true;
             }
@@ -132,7 +132,7 @@ namespace CustomKnight
         }
         public void OnLoadLocal(SaveModSettings s)
         {
-            CustomKnight.SaveSettings = s;
+            CustomKinightRandom.SaveSettings = s;
         }
 
         internal static void toggleSwap(bool enable){
@@ -155,7 +155,7 @@ namespace CustomKnight
         }
         public SaveModSettings OnSaveLocal()
         {
-            return CustomKnight.SaveSettings;
+            return CustomKinightRandom.SaveSettings;
         }
         
     }

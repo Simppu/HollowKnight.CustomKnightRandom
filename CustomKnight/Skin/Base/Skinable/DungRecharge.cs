@@ -1,7 +1,7 @@
 using static Satchel.FsmUtil;
 using static Satchel.GameObjectUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class DungRecharge : Skinable_Multiple
     {
@@ -19,7 +19,7 @@ namespace CustomKnight
             if(materials != null && materials[0].mainTexture != null){
                 ckTex.defaultTex = materials[0].mainTexture as Texture2D;
             } else {
-                CustomKnight.Instance.Log($"skinable {name} : material is null");
+                CustomKinightRandom.Instance.Log($"skinable {name} : material is null");
             }
         }
 

@@ -1,8 +1,8 @@
-using CustomKnight.Canvas;
+using CustomKinightRandom.Canvas;
 using Satchel.BetterMenus;
 using System.Linq;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     internal static class BetterMenu
     {
@@ -10,7 +10,8 @@ namespace CustomKnight
         internal static Menu MenuRef;
 
         internal static void ApplySkin(){
-            var skinToApply = SkinManager.SkinsList[selectedSkin];
+            System.Random rng = new System.Random();
+            var skinToApply = SkinManager.SkinsList[rng.Next(0, SkinManager.SkinsList.Count)];
             SkinManager.SetSkinById(skinToApply.GetId());
             SkinSwapperPanel.hidePanel("");
         }
@@ -20,33 +21,33 @@ namespace CustomKnight
         }
         internal static void SetPreloadButton(){
             var btn = MenuRef.Find("PreloadButton");
-            btn.Name = CustomKnight.GlobalSettings.Preloads ? "Gameplay + Events" : "Gameplay only";
+            btn.Name = CustomKinightRandom.GlobalSettings.Preloads ? "Gameplay + Events" : "Gameplay only";
             btn.Update();
         }
         internal static void TogglePreloads(){
-            CustomKnight.GlobalSettings.Preloads = !CustomKnight.GlobalSettings.Preloads;
+            CustomKinightRandom.GlobalSettings.Preloads = !CustomKinightRandom.GlobalSettings.Preloads;
             SetPreloadButton();
         }
         internal static void SetDumpButton(){
             //var btn = (MenuRef?.Find("AdditonalButtonGroup") as IShadowElement)?.GetElements()?.FirstOrDefault<Element>( e => e.Id == "DumpButton");
             var btn = (MenuRef?.Find("AdditonalButtonGroup") as MenuRow)?.Find("DumpButton");
-            btn.Name = CustomKnight.dumpManager.enabled ? "Dumping sprites" : "Dump sprites";
+            btn.Name = CustomKinightRandom.dumpManager.enabled ? "Dumping sprites" : "Dump sprites";
             btn.Update();
         }
         internal static void ToggleDumping(){
-            CustomKnight.dumpManager.enabled = !CustomKnight.dumpManager.enabled;
-            if(CustomKnight.dumpManager.enabled){
-                CustomKnight.swapManager.Unload();
-                CustomKnight.dumpManager.dumpAllSprites();
+            CustomKinightRandom.dumpManager.enabled = !CustomKinightRandom.dumpManager.enabled;
+            if(CustomKinightRandom.dumpManager.enabled){
+                CustomKinightRandom.swapManager.Unload();
+                CustomKinightRandom.dumpManager.dumpAllSprites();
             } else {
-                CustomKnight.swapManager.Load();
+                CustomKinightRandom.swapManager.Load();
             }
             SetDumpButton();
         }
 
         internal static void DumpAll(){
-            CustomKnight.dumpManager.enabled = !CustomKnight.dumpManager.enabled;
-            CustomKnight.dumpManager.walk();
+            CustomKinightRandom.dumpManager.enabled = !CustomKinightRandom.dumpManager.enabled;
+            CustomKinightRandom.dumpManager.walk();
         }
 
         private static void OpenSkins(){
@@ -59,7 +60,7 @@ namespace CustomKnight
         private static void FixSkins(){ 
             FixSkinStructure.FixSkins();
             TextureCache.clearAllTextureCache(); // clear texture cache
-            CustomKnight.Instance.Log("Reapplying Skin");
+            CustomKinightRandom.Instance.Log("Reapplying Skin");
             // reset skin folder so the same skin can be re-applied
             SkinManager.CurrentSkin = null;
             ApplySkin();
@@ -73,41 +74,18 @@ namespace CustomKnight
             });
         }
         internal static string[] getSkinNameArray(){
-            return SkinManager.SkinsList.Select(s => SkinManager.MaxLength(s.GetName(),CustomKnight.GlobalSettings.NameLength)).ToArray();
+            return SkinManager.SkinsList.Select(s => SkinManager.MaxLength(s.GetName(),CustomKinightRandom.GlobalSettings.NameLength)).ToArray();
         }
         internal static Menu PrepareMenu(ModToggleDelegates toggleDelegates){
             return new Menu("Custom Knight",new Element[]{
                 Blueprints.CreateToggle(toggleDelegates,"Custom Skins", "", "Enabled","Disabled"),
-                new HorizontalOption(
-                    "Swapper", "Apply skin to bosses, enemies & areas",
-                    new string[] { "Disabled", "Enabled" },
-                    (setting) => { CustomKnight.toggleSwap(setting == 1); },
-                    () => CustomKnight.swapManager.enabled ? 1 : 0,
-                    Id:"SwapperEnabled"),
-                new HorizontalOption(
-                    "Select Skin", "The skin will be used for current save and any new saves.",
-                    getSkinNameArray(),
-                    (setting) => { selectedSkin = setting; },
-                    () => selectedSkin,
-                    Id:"SelectSkinOption"),
                 new MenuButton("PreloadButton","Will Preload objects for modifying events",(_)=>TogglePreloads(),Id:"PreloadButton"),
                 new MenuRow(
                     new List<Element>{
-                        Blueprints.NavigateToMenu( "Skin List","Opens a list of Skins",()=> SkinsList.GetMenu(MenuRef.menuScreen)),
-                        new MenuButton("Apply Skin","Apply The currently selected skin.",(_)=> ApplySkin()),
+                        new MenuButton("Randomize Skin","Apply random skin.",(_)=> ApplySkin()),
                     },
                     Id:"ApplyButtonGroup"
-                ){ XDelta = 400f},
-
-                new TextPanel("To Add more skins, copy the skins into your Skins folder."),
-                new MenuRow(
-                    new List<Element>{
-                        new MenuButton("Open Folder","Open skins folder",(_)=>OpenSkins()),
-                        new MenuButton("Fix / Reload","Fix skin structure and reload",(_)=>FixSkins()),
-                        new MenuButton("Need Help?","Join the HK Modding Discord",(_)=>OpenLink("https://discord.gg/J4SV6NFxAA")),
-                    },
-                    Id:"HelpButtonGroup"
-                ){ XDelta = 425f},
+                ){ XDelta = 0f},
                 new MenuRow(
                     new List<Element>{
                         new MenuButton("Dump","Dumps the sprites that Swapper supports (Expect lag)",(_)=>ToggleDumping(),Id:"DumpButton"),

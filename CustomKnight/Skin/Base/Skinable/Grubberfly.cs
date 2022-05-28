@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Grubberfly : Skinable_Multiple
     {
@@ -22,7 +22,7 @@ namespace CustomKnight
             if(materials != null && materials[0].mainTexture != null){
                 ckTex.defaultTex = materials[0].mainTexture as Texture2D;
             } else {
-                CustomKnight.Instance.Log($"skinable {name} : material is null");
+                CustomKinightRandom.Instance.Log($"skinable {name} : material is null");
             }
         }
         public override void ApplyTexture(Texture2D tex){

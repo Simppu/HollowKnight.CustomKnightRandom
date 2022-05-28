@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Compass : Skinable_Single
     {
@@ -12,7 +12,7 @@ namespace CustomKnight
             if(material != null && material.mainTexture != null){
                 ckTex.defaultTex = material.mainTexture as Texture2D;
             } else {
-                CustomKnight.Instance.Log($"skinable {name} : material is null");
+                CustomKinightRandom.Instance.Log($"skinable {name} : material is null");
             }
         }
         public override void ApplyTexture(Texture2D tex){

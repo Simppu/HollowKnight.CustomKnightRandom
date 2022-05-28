@@ -1,5 +1,5 @@
 using System.IO;
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     internal static class FixSkinStructure
     {
@@ -13,7 +13,7 @@ namespace CustomKnight
                 List<string> queue = new List<string>();
                 string[] dirs = Directory.GetDirectories(currentPath);
                 foreach (string dir in dirs){
-                    CustomKnight.Instance.Log("Looking in" + dir);
+                    CustomKinightRandom.Instance.Log("Looking in" + dir);
                     if(dirHasPng(dir,SearchOption.TopDirectoryOnly)){
                         IoUtils.DirectoryCopyAllFiles(dir,root);
                     } else if(dirHasPng(dir,SearchOption.AllDirectories)){
@@ -24,7 +24,7 @@ namespace CustomKnight
                     getPngsToRoot(dir,root);
                 }
             } catch (Exception e) {
-                CustomKnight.Instance.Log("The Skin could not be fixed : " + e.ToString());
+                CustomKinightRandom.Instance.Log("The Skin could not be fixed : " + e.ToString());
             }
         }
         
@@ -34,12 +34,12 @@ namespace CustomKnight
                 foreach (string dir in skinDirectories)
                 {
                     if(!dirHasPng(dir,SearchOption.TopDirectoryOnly) && dirHasPng(dir,SearchOption.AllDirectories)){
-                        CustomKnight.Instance.Log("A broken skin found! " + dir);
+                        CustomKinightRandom.Instance.Log("A broken skin found! " + dir);
                         getPngsToRoot(dir,dir);
                     }
                 }
             } catch (Exception e) {
-                CustomKnight.Instance.Log("Failed to fix : "+ e.ToString());
+                CustomKinightRandom.Instance.Log("Failed to fix : "+ e.ToString());
             }
 
         }

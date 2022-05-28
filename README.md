@@ -1,5 +1,4 @@
-
-#Custom Knight Randomizer
+Custom Knight Randomizer
 
 
 Works like custom knight but randomizes which skin you use.

@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Charm : Skinable_Sprite
     {
@@ -90,7 +90,7 @@ namespace CustomKnight
                             break;
                     }
             } catch(Exception e){
-                CustomKnight.Instance.Log($"skinable {name} : {e}");
+                CustomKinightRandom.Instance.Log($"skinable {name} : {e}");
             }
         }
         public override void ApplySprite(Sprite sprite){

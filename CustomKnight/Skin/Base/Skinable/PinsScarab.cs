@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class PinsScarab : Skinable_Sprite
     {
@@ -10,7 +10,7 @@ namespace CustomKnight
                 GameMap Map = GameManager.instance.gameMap?.GetComponent<GameMap>();
                 ckTex.defaultSprite = Map.mapMarkersBlue[0].GetComponent<SpriteRenderer>().sprite;
             } catch(Exception e){
-                CustomKnight.Instance.Log($"skinable {name} : {e}");
+                CustomKinightRandom.Instance.Log($"skinable {name} : {e}");
             }
         }
         public override void ApplySprite(Sprite sprite){

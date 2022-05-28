@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Sprint : Skinable_Tk2d
     {

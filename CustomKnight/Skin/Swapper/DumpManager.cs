@@ -2,9 +2,9 @@ using System.IO;
 using System.Linq;
 using static Satchel.GameObjectUtils;
 using static Satchel.IoUtils;
-using CustomKnight.Canvas;
+using CustomKinightRandom.Canvas;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
 
     public class coroutineHelper : MonoBehaviour{}
@@ -12,7 +12,7 @@ namespace CustomKnight
 
         internal bool enabled = false;
         internal DumpManager(){
-            if(CustomKnight.isSatchelInstalled()){
+            if(CustomKinightRandom.isSatchelInstalled()){
                 ModHooks.LanguageGetHook += SaveTextDump;
                 UnityEngine.SceneManagement.SceneManager.sceneLoaded += dumpAllSprites;
                 On.HutongGames.PlayMaker.Actions.ActivateGameObject.DoActivateGameObject += dumpAllSprites;
@@ -287,7 +287,7 @@ namespace CustomKnight
             On.HutongGames.PlayMaker.Actions.ActivateGameObject.DoActivateGameObject -= dumpAllSprites;
         }    
         internal void Log(string str) {
-            CustomKnight.Instance.Log("[DumpManager] " +str);
+            CustomKinightRandom.Instance.Log("[DumpManager] " +str);
         }
         internal static void debugDumpSprite(Sprite sprite){
             Texture2D dupe = (Texture2D) Satchel.SpriteUtils.ExtractTextureFromSprite(sprite);

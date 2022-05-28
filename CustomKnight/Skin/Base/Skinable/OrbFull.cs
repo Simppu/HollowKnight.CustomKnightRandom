@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class OrbFull : Skinable_Sprite
     {
@@ -15,7 +15,7 @@ namespace CustomKnight
                     }
                 }
             } catch(Exception e){
-                CustomKnight.Instance.Log($"skinable {name} : {e}");
+                CustomKinightRandom.Instance.Log($"skinable {name} : {e}");
             }
         }
         public override void ApplySprite(Sprite sprite){

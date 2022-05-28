@@ -1,11 +1,11 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     internal class TextureCache { // used for reducing disk reads when switching skins back and forth
-        internal static Dictionary<string,Dictionary<string,CustomKnightTexture>> skinTextureCache = new Dictionary<string,Dictionary<string,CustomKnightTexture>>();
+        internal static Dictionary<string,Dictionary<string,CustomKinightRandomTexture>> skinTextureCache = new Dictionary<string,Dictionary<string,CustomKinightRandomTexture>>();
         internal static List<string> recentSkins = new List<string>();
-        internal static void setSkinTextureCache(string skin,string filename,CustomKnightTexture texture){
+        internal static void setSkinTextureCache(string skin,string filename,CustomKinightRandomTexture texture){
             if(!skinTextureCache.ContainsKey(skin)){
-                 skinTextureCache[skin] = new Dictionary<string,CustomKnightTexture>();
+                 skinTextureCache[skin] = new Dictionary<string,CustomKinightRandomTexture>();
             }
             skinTextureCache[skin][filename] = texture;
         }
@@ -16,8 +16,8 @@ namespace CustomKnight
             skinTextureCache.Remove(skin);
         }
         internal static void trimTextureCache(){
-            if(recentSkins.Count > CustomKnight.GlobalSettings.MaxSkinCache ){ 
-                recentSkins = recentSkins.GetRange(recentSkins.Count - CustomKnight.GlobalSettings.MaxSkinCache,CustomKnight.GlobalSettings.MaxSkinCache);
+            if(recentSkins.Count > CustomKinightRandom.GlobalSettings.MaxSkinCache ){ 
+                recentSkins = recentSkins.GetRange(recentSkins.Count - CustomKinightRandom.GlobalSettings.MaxSkinCache,CustomKinightRandom.GlobalSettings.MaxSkinCache);
             }
             var toClear = new List<string>();
             foreach(var kvp in skinTextureCache){

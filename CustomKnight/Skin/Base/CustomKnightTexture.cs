@@ -1,10 +1,10 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
 
     /// <summary>
     ///     The Class that represents the state of a <c>Skinable's</c> texture.
     /// </summary>
-    public class CustomKnightTexture
+    public class CustomKinightRandomTexture
     {
         public bool missing;
         public string fileName;
@@ -23,7 +23,7 @@ namespace CustomKnight
             }
         }
 
-        public CustomKnightTexture(string fileName, bool missing, Texture2D defaultTex, Texture2D tex)
+        public CustomKinightRandomTexture(string fileName, bool missing, Texture2D defaultTex, Texture2D tex)
         {
             this.fileName = fileName;
             this.missing = missing;

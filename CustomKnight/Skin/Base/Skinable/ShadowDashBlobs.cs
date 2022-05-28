@@ -1,6 +1,6 @@
 using static Satchel.GameObjectUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class ShadowDashBlobs : Skinable_Tk2d
     {

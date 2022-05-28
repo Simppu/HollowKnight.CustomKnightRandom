@@ -1,6 +1,6 @@
 using static Satchel.GameObjectUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class HitPt : Skinable_Tk2ds
     {

@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
 
     /// <summary>
@@ -15,15 +15,15 @@ namespace CustomKnight
         public Skinable(string name){
             this.name = name;
         }
-        public CustomKnightTexture _ckTex;
+        public CustomKinightRandomTexture _ckTex;
         
         /// <summary>
-        ///     A CustomKnightTexture that holds the state of the skin for this skinable.
+        ///     A CustomKinightRandomTexture that holds the state of the skin for this skinable.
         /// </summary>
-        public CustomKnightTexture ckTex {
+        public CustomKinightRandomTexture ckTex {
              get{ 
                 if(_ckTex == null){
-                    _ckTex = new CustomKnightTexture(name + ".png", false, null, null);
+                    _ckTex = new CustomKinightRandomTexture(name + ".png", false, null, null);
                 }
                 return _ckTex;
             } 
@@ -91,7 +91,7 @@ namespace CustomKnight
                     try{
                         _material = GetMaterial();
                     } catch (Exception e){
-                        CustomKnight.Instance.Log(e.ToString());
+                        CustomKinightRandom.Instance.Log(e.ToString());
                     }
                 }
                 return _material;
@@ -128,7 +128,7 @@ namespace CustomKnight
                     try{
                         _materials = GetMaterials();
                     } catch (Exception e){
-                        CustomKnight.Instance.Log(e.ToString());
+                        CustomKinightRandom.Instance.Log(e.ToString());
                     }
                 }
                 return _materials;
@@ -185,7 +185,7 @@ namespace CustomKnight
             if(material != null && material.mainTexture != null){
                 ckTex.defaultTex = material.mainTexture as Texture2D;
             } else {
-                CustomKnight.Instance.Log($"skinable {name} : material is null");
+                CustomKinightRandom.Instance.Log($"skinable {name} : material is null");
             }
         }
         public override void ApplyTexture(Texture2D tex){
@@ -206,7 +206,7 @@ namespace CustomKnight
             if(materials != null && materials[0].mainTexture != null){
                 ckTex.defaultTex = materials[0].mainTexture as Texture2D;
             } else {
-                CustomKnight.Instance.Log($"skinable {name} : material is null");
+                CustomKinightRandom.Instance.Log($"skinable {name} : material is null");
             }
         }
         public override void ApplyTexture(Texture2D tex){
@@ -227,7 +227,7 @@ namespace CustomKnight
             if(material != null && material.mainTexture != null){
                 ckTex.defaultTex = material.mainTexture as Texture2D;
             } else {
-                CustomKnight.Instance.Log($"skinable {name} : material is null");
+                CustomKinightRandom.Instance.Log($"skinable {name} : material is null");
             }
         }
         public override void ApplyTexture(Texture2D tex){

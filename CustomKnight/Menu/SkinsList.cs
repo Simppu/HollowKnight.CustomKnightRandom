@@ -1,6 +1,6 @@
 using Satchel.BetterMenus;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     internal static class SkinsList
     {
@@ -29,7 +29,7 @@ namespace CustomKnight
                     try {
                         BetterMenu.ApplySkin();
                     } catch(Exception e){
-                        CustomKnight.Instance.Log(e.ToString());
+                        CustomKinightRandom.Instance.Log(e.ToString());
                     }
                 }
             );
@@ -44,7 +44,7 @@ namespace CustomKnight
         }
 
         internal static MenuButton ApplySkinButton(int index){
-            var ButtonText = SkinManager.MaxLength(SkinManager.SkinsList[index].GetName(),CustomKnight.GlobalSettings.NameLength);
+            var ButtonText = SkinManager.MaxLength(SkinManager.SkinsList[index].GetName(),CustomKinightRandom.GlobalSettings.NameLength);
             return new MenuButton(ButtonText,"",(mb) => {
                     if(!applying){
                         applying = true;

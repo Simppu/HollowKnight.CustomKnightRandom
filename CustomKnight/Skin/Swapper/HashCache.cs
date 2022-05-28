@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.IO;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     internal class CacheObj{
         internal Dictionary<string,string> PathToHash = new();

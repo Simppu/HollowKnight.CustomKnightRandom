@@ -1,6 +1,6 @@
 using static Satchel.GameObjectUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Leak : Skinable_Tk2ds
     {

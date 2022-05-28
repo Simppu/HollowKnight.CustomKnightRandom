@@ -1,8 +1,8 @@
   <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <RootNamespace>CustomKnight</RootNamespace>
-    <AssemblyName>CustomKnight</AssemblyName>
+    <RootNamespace>CustomKinightRandom</RootNamespace>
+    <AssemblyName>CustomKinightRandom</AssemblyName>
     <AssemblyVersion>2.1.1</AssemblyVersion>
     <TargetFramework>net472</TargetFramework>
     <FileAlignment>512</FileAlignment>

@@ -1,7 +1,7 @@
 
 using Modding;
 using UnityEngine;
-using CustomKnight;
+using CustomKinightRandom;
 using System;
 
 namespace AsymmetricalKnight{
@@ -32,10 +32,10 @@ namespace AsymmetricalKnight{
     public class AsymmetricalKnight : Mod {
         new public string GetName() => "Asymmetrical Knight";
         public override string GetVersion() => "v1";
-        public bool isCustomKnightInstalled(){
-            return ModHooks.GetMod("CustomKnight") is Mod;
+        public bool isCustomKinightRandomInstalled(){
+            return ModHooks.GetMod("CustomKinightRandom") is Mod;
         }
-        public void AddCustomKnightHandlers(){
+        public void AddCustomKinightRandomHandlers(){
                 SkinManager.OnSetSkin += (_,e) => {
                     var skin = SkinManager.GetCurrentSkin();
                     var currDirIsLeft = false;
@@ -44,9 +44,9 @@ namespace AsymmetricalKnight{
                     }
 
                     if(lastSkin != skin.GetId()){
-                        Knight = new Asymmetrical(CustomKnight.Knight.NAME);
-                        Sprint = new Asymmetrical(CustomKnight.Sprint.NAME);
-                        Unn = new Asymmetrical(CustomKnight.Unn.NAME);
+                        Knight = new Asymmetrical(CustomKinightRandom.Knight.NAME);
+                        Sprint = new Asymmetrical(CustomKinightRandom.Sprint.NAME);
+                        Unn = new Asymmetrical(CustomKinightRandom.Unn.NAME);
                         Knight.GetTexture(skin,currDirIsLeft);
                         Unn.GetTexture(skin,currDirIsLeft);
                         Sprint.GetTexture(skin,currDirIsLeft);
@@ -56,9 +56,9 @@ namespace AsymmetricalKnight{
         }
         public override void Initialize()
         {
-            if(isCustomKnightInstalled()){ //do not do anything with ck if ck is not installed
+            if(isCustomKinightRandomInstalled()){ //do not do anything with ck if ck is not installed
                 ModHooks.HeroUpdateHook +=  UpdateSkin;
-                AddCustomKnightHandlers();
+                AddCustomKinightRandomHandlers();
             } else {
                 Log("Custom Knight not found, doing nothing!");
             }
@@ -74,9 +74,9 @@ namespace AsymmetricalKnight{
             var currDirIsLeft = HeroController.instance.transform.localScale.x > 0;
 
             if(lastSkin != skin.GetId()){
-                Knight = new Asymmetrical(CustomKnight.Knight.NAME);
-                Sprint = new Asymmetrical(CustomKnight.Sprint.NAME);
-                Unn = new Asymmetrical(CustomKnight.Unn.NAME);
+                Knight = new Asymmetrical(CustomKinightRandom.Knight.NAME);
+                Sprint = new Asymmetrical(CustomKinightRandom.Sprint.NAME);
+                Unn = new Asymmetrical(CustomKinightRandom.Unn.NAME);
                 Knight.GetTexture(skin,currDirIsLeft);
                 Unn.GetTexture(skin,currDirIsLeft);
                 Sprint.GetTexture(skin,currDirIsLeft);
@@ -88,13 +88,13 @@ namespace AsymmetricalKnight{
                 var unn = Unn.GetTexture(skin,currDirIsLeft);
                 var sprint = Sprint.GetTexture(skin,currDirIsLeft);
                 if(knight != null){
-                    SkinManager.Skinables[CustomKnight.Knight.NAME].ApplyTexture(knight);
+                    SkinManager.Skinables[CustomKinightRandom.Knight.NAME].ApplyTexture(knight);
                 }
                 if(sprint != null){
-                    SkinManager.Skinables[CustomKnight.Sprint.NAME].ApplyTexture(sprint);
+                    SkinManager.Skinables[CustomKinightRandom.Sprint.NAME].ApplyTexture(sprint);
                 }
                 if(unn != null){
-                    SkinManager.Skinables[CustomKnight.Unn.NAME].ApplyTexture(unn);
+                    SkinManager.Skinables[CustomKinightRandom.Unn.NAME].ApplyTexture(unn);
                 }
                 lastDirWasLeft = currDirIsLeft;
             }

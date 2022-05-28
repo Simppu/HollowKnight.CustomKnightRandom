@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-namespace CustomKnight.Canvas
+namespace CustomKinightRandom.Canvas
 {
     public class GUIController : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace CustomKnight.Canvas
                 scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 scaler.referenceResolution = new Vector2(1920f, 1080f);
                 canvas.AddComponent<GraphicRaycaster>();
-                if(CustomKnight.GlobalSettings.showMovedText){
+                if(CustomKinightRandom.GlobalSettings.showMovedText){
                     SkinSwapperPanel.BuildMenu(canvas);
                 }
                 SkinSwapperPanel.BuildDumpingUpdatePanel(canvas);

@@ -1,4 +1,4 @@
-﻿namespace CustomKnight.Canvas
+﻿namespace CustomKinightRandom.Canvas
 {
     public class SkinSwapperPanel
     {
@@ -6,7 +6,7 @@
         public static CanvasPanel DumpingUpdatePanel;
 
         public static void hidePanel(string bn){
-            CustomKnight.GlobalSettings.showMovedText = false;
+            CustomKinightRandom.GlobalSettings.showMovedText = false;
             if(Panel != null) {
                 Panel.SetActive(false, true);
             }
@@ -113,7 +113,7 @@
         
         private static void OnPause(On.HeroController.orig_Pause orig, HeroController hc)
         {
-            if(CustomKnight.GlobalSettings.showMovedText){
+            if(CustomKinightRandom.GlobalSettings.showMovedText){
                 Panel.SetActive(true, false);
             }
             orig(hc);

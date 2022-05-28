@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using static Satchel.IoUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class SwapManager
     {
@@ -132,14 +132,14 @@ namespace CustomKnight
                 } else {
                     if(anim != null){
                         //maybe animated things can be replaced with a single sprite
-                        CustomKnight.Instance.Log($"Animation  : {anim.name}");                    
+                        CustomKinightRandom.Instance.Log($"Animation  : {anim.name}");                    
                         //GameObject.Destroy(anim);
                         //go.AddComponent<Animator>();
                         // destroyed the animation, possibly add satchel customAnimation later
                     }
                     //currentSkinnedSceneObjs.Add(objectPath); re add sprites for a while
                     //some sprites are still not perfectly matched 
-                    CustomKnight.Instance.Log($"game object : {sr.name} ");
+                    CustomKinightRandom.Instance.Log($"game object : {sr.name} ");
                     var pivot = new Vector2(0.5f, 0.5f); // this needs offset sometimes
                     sr.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), pivot ,sr.sprite.pixelsPerUnit);
                     //Log($"pivot post application {sr.sprite.pivot/new Vector2(tex.width, tex.height)}");
@@ -154,13 +154,13 @@ namespace CustomKnight
         }
         
         private void applySkinsUsingProxy(GameObjectProxy gop,GameObject go){
-            //CustomKnight.Instance.Log("Traversing : " + gop.getTexturePath());
+            //CustomKinightRandom.Instance.Log("Traversing : " + gop.getTexturePath());
             if(go == null){
-                CustomKnight.Instance.Log("Null Go : " + gop.getTexturePath());
+                CustomKinightRandom.Instance.Log("Null Go : " + gop.getTexturePath());
                 return;
             }
             if(gop.hasTexture){
-                //CustomKnight.Instance.Log("hasTexture");
+                //CustomKinightRandom.Instance.Log("hasTexture");
                 try{
                     loadTexture(gop);
                 } catch( Exception e){
@@ -172,7 +172,7 @@ namespace CustomKnight
             }
             //traverse this gop
             if(gop.hasChildren && go.transform.childCount > 0){
-                //CustomKnight.Instance.Log("hasChildren " + gop.children.Count() + " c " + go.transform.childCount);
+                //CustomKinightRandom.Instance.Log("hasChildren " + gop.children.Count() + " c " + go.transform.childCount);
                 foreach(KeyValuePair<string,GameObjectProxy> kvp in gop.children){
                     try{
                         this.Log("Trying children with name : " + kvp.Key);
@@ -538,7 +538,7 @@ namespace CustomKnight
             }
         }
         internal void Log(string str) {
-            CustomKnight.Instance.Log("[SwapManager] " +str);
+            CustomKinightRandom.Instance.Log("[SwapManager] " +str);
         }
 
     }

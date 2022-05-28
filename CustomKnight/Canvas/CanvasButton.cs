@@ -1,7 +1,7 @@
 ﻿using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace CustomKnight.Canvas
+namespace CustomKinightRandom.Canvas
 {
     public class CanvasButton
     {

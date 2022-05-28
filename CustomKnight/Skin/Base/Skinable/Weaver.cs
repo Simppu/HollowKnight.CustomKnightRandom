@@ -1,7 +1,7 @@
 using static Satchel.FsmUtil;
 using static Satchel.GameObjectUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Weaver : Skinable_Tk2d
     {

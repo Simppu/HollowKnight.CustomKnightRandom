@@ -1,4 +1,4 @@
-﻿namespace CustomKnight
+﻿namespace CustomKinightRandom
 {
     internal class SpriteLoader {
         private static bool texRoutineRunning;
@@ -44,7 +44,7 @@
         
         internal static IEnumerator Start()
         {
-            CustomKnight.swapManager.SkinChangeSwap(SkinManager.CurrentSkin);
+            CustomKinightRandom.swapManager.SkinChangeSwap(SkinManager.CurrentSkin);
             yield return new WaitWhile(
                 () => HeroController.instance == null || GameManager.instance == null || GameManager.instance.gameMap == null
             );
@@ -55,7 +55,7 @@
         {
             foreach (KeyValuePair<string, Skinable> pair in SkinManager.Skinables)
             {
-                CustomKnightTexture texture = pair.Value.ckTex;
+                CustomKinightRandomTexture texture = pair.Value.ckTex;
                 if (texture.tex != null)
                 {
                     GameObject.Destroy(texture.tex);
@@ -82,7 +82,7 @@
             foreach (KeyValuePair<string,Skinable> kvp in SkinManager.Skinables)
             {
                 kvp.Value.prepare();
-                CustomKnightTexture texture = kvp.Value.ckTex;
+                CustomKinightRandomTexture texture = kvp.Value.ckTex;
                 if(TextureCache.skinTextureCache.TryGetValue(SkinManager.CurrentSkin.GetId(),out var skinCache) && skinCache.TryGetValue(texture.fileName,out var cachedTex)){
                     texture.tex = cachedTex.tex;
                     texture.missing = cachedTex.missing;
@@ -93,7 +93,7 @@
                 {
                     texture.tex = SkinManager.CurrentSkin.GetTexture(texture.fileName);
                     if(SkinManager.CurrentSkin.shouldCache()){
-                        TextureCache.setSkinTextureCache(SkinManager.CurrentSkin.GetId(),texture.fileName,new CustomKnightTexture(texture.fileName,texture.missing,texture.defaultTex,texture.tex));
+                        TextureCache.setSkinTextureCache(SkinManager.CurrentSkin.GetId(),texture.fileName,new CustomKinightRandomTexture(texture.fileName,texture.missing,texture.defaultTex,texture.tex));
                     }
                 } else {
                     texture.tex = null;
@@ -114,7 +114,7 @@
             }*/
             
             PullDefaultTextures();
-            CustomKnight.swapManager.SkinChangeSwap(SkinManager.CurrentSkin);
+            CustomKinightRandom.swapManager.SkinChangeSwap(SkinManager.CurrentSkin);
             foreach(KeyValuePair<string,Skinable> kvp in SkinManager.Skinables){
                 kvp.Value.Apply();
             }

@@ -1,4 +1,4 @@
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class Wraiths : Skinable_noCache
     {

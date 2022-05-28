@@ -1,25 +1,25 @@
-# CustomKnight 
+# CustomKinightRandom 
 A Hollow Knight mod to load custom texture sheets for the player
 
 ### Installing the Mod Manually:
 
 1. Extract the .zip file.
-2. Place the output folder under the Mods/CustomKnight directory:
+2. Place the output folder under the Mods/CustomKinightRandom directory:
 
 ``` 
-Windows		C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods\CustomKnight\
-Mac		~/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app/hollow_knight_Data/Resources/Data/Managed/Mods/CustomKnight/
-Linux		~/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed/Mods/CustomKnight/
+Windows		C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods\CustomKinightRandom\
+Mac		~/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app/hollow_knight_Data/Resources/Data/Managed/Mods/CustomKinightRandom/
+Linux		~/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed/Mods/CustomKinightRandom/
 ```
 
 3. Open the game (may take a while) and load a save.
-4. Pause the game and go to Settings > Mods > CustomKnight & choose your desired skin.
+4. Pause the game and go to Settings > Mods > CustomKinightRandom & choose your desired skin.
 
 ### Installing Skins:
 
 1. Download the skin 
 2. Place the skin's images in a directory that is the same name as the skin
-3. Copy this directory to the Skins directory under the game's Mods/CustomKnight directoy (mentioned earlier)
+3. Copy this directory to the Skins directory under the game's Mods/CustomKinightRandom directoy (mentioned earlier)
 
 Make sure that the folder you copy opens directly to the image files themselves. That is, when you double click on the folder, it opens up to the PNGs themselves and not to another folder or zip. 
 
@@ -36,7 +36,7 @@ Note that, You do not need to have all the images that Default has in your folde
 
 ### Other Features:
 
-#### CustomKnight API
+#### CustomKinightRandom API
 
 - adds ability to add more items that can be skinned (even custom items)
 - adds ability to extend or modify existing skins at runtime 
@@ -54,15 +54,15 @@ See example mods under `AddonExample` directory in this repo for more, xml docs 
 
 Using Swapper as a skin author : 
 
- - to replace a sprite : `mods/CustomKnight/Skins/<skin>/Swap/<scene-name>/<gameobjectname>.png`
+ - to replace a sprite : `mods/CustomKinightRandom/Skins/<skin>/Swap/<scene-name>/<gameobjectname>.png`
 (will only update once encountered in this scene, refer to the dumped png)
 
 -- to replace a sprite globally look for the sprite in the `Global` directory it will allow you to replace enemies / npcs / objects globally if the file exists in this folder
 
-- to replace a text using it's in-game key :  `mods/CustomKnight/Skins/<skin>/Swap/<scene-name>/<key>.txt`
+- to replace a text using it's in-game key :  `mods/CustomKinightRandom/Skins/<skin>/Swap/<scene-name>/<key>.txt`
 (scene-name here is just for organisation, the text will update globally)
 
-- to replace a text without it's key (case insensitive find & replace) : add the text in `mods/CustomKnight/Skins/<skin>/Swap/replace.txt`
+- to replace a text without it's key (case insensitive find & replace) : add the text in `mods/CustomKinightRandom/Skins/<skin>/Swap/replace.txt`
 
 for example :
 ```
@@ -73,7 +73,7 @@ geo=>Ca$hMoney
 ( Dump is triggered by new object creation & scene change) 
 
 Use Swapper to swap things across skins : 
- - create a Swap folder inside CustomKnight directory : `mods/CustomKnight/Swap/`
+ - create a Swap folder inside CustomKinightRandom directory : `mods/CustomKinightRandom/Swap/`
  - treat this as a global "skin" that applies regardless of the skin being selected.
 
 

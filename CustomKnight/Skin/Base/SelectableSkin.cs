@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
 
     /// <summary>
@@ -63,7 +63,7 @@ namespace CustomKnight
 
     
     /// <summary>
-    ///     The Class that represents all static skins that CustomKnight manages.
+    ///     The Class that represents all static skins that CustomKinightRandom manages.
     /// </summary>
     public class StaticSkin : ISelectableSkin{
         public string SkinDirectory = "";
@@ -88,7 +88,7 @@ namespace CustomKnight
                 texture = new Texture2D(2, 2);
                 texture.LoadImage(texBytes);
             } catch(Exception e){
-                CustomKnight.Instance.Log(e.ToString());
+                CustomKinightRandom.Instance.Log(e.ToString());
             }
             return texture;
         } 
@@ -98,7 +98,7 @@ namespace CustomKnight
                 string file = ($"{SkinManager.SKINS_FOLDER}/{SkinDirectory}/{FileName}").Replace("\\", "/");
                 data = File.ReadAllBytes(file);
             } catch(Exception e){
-                CustomKnight.Instance.Log(e.ToString());
+                CustomKinightRandom.Instance.Log(e.ToString());
             }
             return data;
         } 

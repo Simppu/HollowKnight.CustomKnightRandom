@@ -1,6 +1,6 @@
 using static Satchel.GameObjectUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
     public class QOrbs : Skinable_Tk2d
     {

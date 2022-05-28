@@ -1,7 +1,7 @@
 using System.IO;
 using static Satchel.IoUtils;
 
-namespace CustomKnight
+namespace CustomKinightRandom
 {
 
     public static class SkinManager{
@@ -48,15 +48,15 @@ namespace CustomKnight
             {Compass.NAME,new Compass()},
             {Grubberfly.NAME,new Grubberfly()},
 
-            {"Cloak",new Preload("Cloak",() => CustomKnight.GameObjects["Cloak"])},
-            {"Shriek",new Preload("Shriek",() => CustomKnight.GameObjects["Shriek"])},
-            {"Wings",new Preload("Wings",() => CustomKnight.GameObjects["Wings"])},
-            {"Quirrel",new Preload("Quirrel",() => CustomKnight.GameObjects["Quirrel"])},
-            {"Webbed",new Preload("Webbed",() => CustomKnight.GameObjects["Webbed"])},
-            {"DreamArrival",new Preload("DreamArrival",() => CustomKnight.GameObjects["DreamArrival"])},
-            {"Dreamnail",new Preload("Dreamnail",() => CustomKnight.GameObjects["Dreamnail"])},
-            {"Hornet",new Preload("Hornet",() => CustomKnight.GameObjects["Hornet"])},
-            {"Birthplace",new Preload("Birthplace",() => CustomKnight.GameObjects["Birthplace"])},
+            {"Cloak",new Preload("Cloak",() => CustomKinightRandom.GameObjects["Cloak"])},
+            {"Shriek",new Preload("Shriek",() => CustomKinightRandom.GameObjects["Shriek"])},
+            {"Wings",new Preload("Wings",() => CustomKinightRandom.GameObjects["Wings"])},
+            {"Quirrel",new Preload("Quirrel",() => CustomKinightRandom.GameObjects["Quirrel"])},
+            {"Webbed",new Preload("Webbed",() => CustomKinightRandom.GameObjects["Webbed"])},
+            {"DreamArrival",new Preload("DreamArrival",() => CustomKinightRandom.GameObjects["DreamArrival"])},
+            {"Dreamnail",new Preload("Dreamnail",() => CustomKinightRandom.GameObjects["Dreamnail"])},
+            {"Hornet",new Preload("Hornet",() => CustomKinightRandom.GameObjects["Hornet"])},
+            {"Birthplace",new Preload("Birthplace",() => CustomKinightRandom.GameObjects["Birthplace"])},
 
             {"Charm_0",new Charm("Charm_0",0)},
             {"Charm_1",new Charm("Charm_1",1)},
@@ -115,7 +115,7 @@ namespace CustomKnight
            // {"PinsScarab", new Pins()}
         };
         static SkinManager(){
-            if(CustomKnight.isSatchelInstalled()){
+            if(CustomKinightRandom.isSatchelInstalled()){
                 SetDataDir();
             }
         }    
@@ -152,7 +152,7 @@ namespace CustomKnight
         internal static void LoadSkin(){
             if (CurrentSkin == null)
             {
-                var CurrentSkinName = CustomKnight.SaveSettings.DefaultSkin != CustomKnight.GlobalSettings.DefaultSkin ? CustomKnight.SaveSettings.DefaultSkin : CustomKnight.GlobalSettings.DefaultSkin;
+                var CurrentSkinName = CustomKinightRandom.SaveSettings.DefaultSkin != CustomKinightRandom.GlobalSettings.DefaultSkin ? CustomKinightRandom.SaveSettings.DefaultSkin : CustomKinightRandom.GlobalSettings.DefaultSkin;
                 CurrentSkin = GetSkinById(CurrentSkinName);
             }
             SpriteLoader.Load();
@@ -166,8 +166,8 @@ namespace CustomKnight
             CurrentSkin = GetDefaultSkin();
             LoadSkin();
             On.GeoControl.Start -= ((Geo)Skinables[Geo.NAME]).GeoControl_Start;
-            CustomKnight.dumpManager.Unload();
-            CustomKnight.swapManager.Unload();
+            CustomKinightRandom.dumpManager.Unload();
+            CustomKinightRandom.swapManager.Unload();
         }
         private static IEnumerator ChangeSkinRoutine(bool skipFlash)
         {
@@ -247,18 +247,18 @@ namespace CustomKnight
         public static void SetSkinById(string id)
         {
             var Skin = GetSkinById(id);
-            CustomKnight.Instance.Log("Trying to apply skin :" + Skin.GetId());
+            CustomKinightRandom.Instance.Log("Trying to apply skin :" + Skin.GetId());
             if(CurrentSkin != null && CurrentSkin.GetId() == Skin.GetId()) { return; } 
             CurrentSkin = Skin;
             // use this when saving so you save to the right settings
             if(GameManager.instance.IsNonGameplayScene()){
-                CustomKnight.GlobalSettings.DefaultSkin = CurrentSkin.GetId();
+                CustomKinightRandom.GlobalSettings.DefaultSkin = CurrentSkin.GetId();
             } else {
-                CustomKnight.GlobalSettings.DefaultSkin = CurrentSkin.GetId();
-                CustomKnight.SaveSettings.DefaultSkin = CurrentSkin.GetId();
+                CustomKinightRandom.GlobalSettings.DefaultSkin = CurrentSkin.GetId();
+                CustomKinightRandom.SaveSettings.DefaultSkin = CurrentSkin.GetId();
             };
             RefreshSkin(false);
-            OnSetSkin?.Invoke(CustomKnight.Instance,new EventArgs());
+            OnSetSkin?.Invoke(CustomKinightRandom.Instance,new EventArgs());
         }      
 
    

@@ -1,6 +1,6 @@
 using Modding;
 using UnityEngine;
-using CustomKnight;
+using CustomKinightRandom;
 using Satchel;
 using System;
 using System.Collections;
@@ -46,7 +46,7 @@ namespace SkinProvider{
         public EmbeddedSkin Skin = new EmbeddedSkin();
         public override void Initialize()
         {
-            CustomKnight.CustomKnight.OnReady += (_,e)=>{
+            CustomKinightRandom.CustomKinightRandom.OnReady += (_,e)=>{
                 SkinManager.AddSkin(Skin);
             };
             ModHooks.HeroUpdateHook += ()=>{
